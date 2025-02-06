@@ -52,8 +52,6 @@ with mp_hands.Hands(
 
         if not sts:
             break
-
-        # timpa aja wkwkkw, ngeflip horizontally
         frame = cv2.flip(frame, 1)
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         result = hands.process(frame_rgb)
@@ -77,7 +75,6 @@ with mp_hands.Hands(
                 elif jumlah_terbuka == 1 and kelingking_terbuka:  # Kelingking terbuka
                     gesture_text = 'RIGHT'  # Kelingking diangkat
 
-        # Mengirimkan perintah ke keyboard berdasarkan gesture yang terdeteksi
         if gesture_text != last_gesture:
             if gesture_text == 'UP':
                 pyautogui.press('up')
@@ -90,7 +87,6 @@ with mp_hands.Hands(
 
         last_gesture = gesture_text
 
-        # Menampilkan teks di layar
         cv2.putText(frame, gesture_text, (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3, cv2.LINE_AA)
 
         cv2.imshow('Gesture Control Subway Surfers', frame)
